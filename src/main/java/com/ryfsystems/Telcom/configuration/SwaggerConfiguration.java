@@ -12,8 +12,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.io.IOException;
-
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
@@ -22,7 +20,7 @@ public class SwaggerConfiguration {
     private String applicationName;
 
     @Bean
-    public Docket serviceApi() throws IOException {
+    public Docket serviceApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("Infrastructure")
                 .apiInfo(serviceApiInfo()).select()
@@ -31,12 +29,12 @@ public class SwaggerConfiguration {
                 .build();
     }
 
-    private ApiInfo serviceApiInfo() throws IOException {
+    private ApiInfo serviceApiInfo() {
 
         return new ApiInfoBuilder()
                 .title(applicationName)
                 .description("Microservices Farm to Manage Administrative Operations")
-                .version("0.0.1")
+                .version("1.0.0")
                 .termsOfServiceUrl("Null")
                 .licenseUrl("https://help.github.com/articles/open-source-licensing/")
                 .contact(new Contact("Ing. Rayne Flores", "","raynitoflores@gmail.com"))
