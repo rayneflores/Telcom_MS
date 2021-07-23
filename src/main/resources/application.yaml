@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: Microservices Architecture
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://181.115.69.1:5640/Mikrowisp6?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+    username: desarrollo
+    password: kbknyWmYxqHNGXSU
+    hikari:
+      connection-test-query: SELECT 1
+      idle-timeout: 30000
+      leak-detection-threshold: 2000
+      minimum-idle: 3
+      maximum-pool-size: 5
+      max-lifetime: 300000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+server:
+  address: 192.168.0.4
+  port: 9000
+logging:
+  level:
+    hibernate.SQL: error
+    root: info
