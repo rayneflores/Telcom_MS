@@ -24,4 +24,13 @@ public interface IFacturaDao extends CrudRepository<Factura, Long> {
             "on f.idcliente = u.id " +
             "where f.estado = 'No Pagado' and u.clienteZona = :zona")
     Iterable<Factura> findAllWithDescriptionQuery(@Param("zona") String zona);
+
+    @Query("Select " +
+            "f.id, " +
+            "u.nombre, f.emitido, f.legal, f.total, f.vencimiento, f.pago, u.direccionPrincipal, u.telefono, u.movil, u.correo " +
+            "from Factura f " +
+            "left join Usuario u " +
+            "on f.idcliente = u.id " +
+            "where f.estado = 'No Pagado' and u.nombre like %:nombre%")
+    Iterable<Factura> findAllByClientWithDescriptionQuery(@Param("nombre") String nombre);
 }
