@@ -18,7 +18,7 @@ public interface IFacturaDao extends CrudRepository<Factura, Long> {
 
     @Query("Select " +
             "f.id, " +
-            "u.nombre, f.emitido, f.legal, f.total, f.vencimiento, f.pago, u.direccionPrincipal, u.telefono, u.movil, u.correo " +
+            "u.nombre, f.emitido, f.legal, f.total, f.vencimiento, f.pago, u.direccionPrincipal, u.telefono, u.movil, u.correo, u.id, u.facturacionTipo " +
             "from Factura f " +
             "left join Usuario u " +
             "on f.idcliente = u.id " +
@@ -27,7 +27,7 @@ public interface IFacturaDao extends CrudRepository<Factura, Long> {
 
     @Query("Select " +
             "f.id, " +
-            "u.nombre, f.emitido, f.legal, f.total, f.vencimiento, f.pago, u.direccionPrincipal, u.telefono, u.movil, u.correo " +
+            "u.nombre, f.emitido, f.legal, f.total, f.vencimiento, f.pago, u.direccionPrincipal, u.telefono, u.movil, u.correo, u.id, u.facturacionTipo " +
             "from Factura f " +
             "left join Usuario u " +
             "on f.idcliente = u.id " +

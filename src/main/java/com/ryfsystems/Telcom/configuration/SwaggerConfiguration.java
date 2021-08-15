@@ -34,7 +34,7 @@ public class SwaggerConfiguration {
         return new ApiInfoBuilder()
                 .title(applicationName)
                 .description("Microservices Farm to Manage Administrative Operations")
-                .version("1.0.1")
+                .version("2.0.0")
                 .termsOfServiceUrl("Null")
                 .licenseUrl("https://help.github.com/articles/open-source-licensing/")
                 .contact(new Contact("Ing. Rayne Flores", "","raynitoflores@gmail.com"))

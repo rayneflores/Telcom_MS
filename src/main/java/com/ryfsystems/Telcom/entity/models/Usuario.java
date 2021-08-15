@@ -30,4 +30,5 @@ public class Usuario implements Serializable {
     private String codigo;
     private String direccionPrincipal;
     private String clienteZona;
+    private String facturacionTipo;
 }
