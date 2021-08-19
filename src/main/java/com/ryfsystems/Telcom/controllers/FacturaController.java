@@ -51,6 +51,17 @@ public class FacturaController {
         return response;
     }
 
+    @GetMapping("/withClientNameP/{name}")
+    public Map<String, List<Factura>> getAllFacturasPagadasWithClientName(@PathVariable(value = "name") String name) {
+        Map<String, List<Factura>> response = new HashMap<>();
+        List<Factura> facturasList;
+        facturasList = StreamSupport
+                .stream(facturaService.findAllByClientWithDescriptionQuery2(name).spliterator(), false)
+                .collect(Collectors.toList());
+        response.put("facturas", facturasList);
+        return response;
+    }
+
     @GetMapping("/allByClientId/{clientId}")
     public Map<String, List<Factura>> getAllClientIdFacturas(@PathVariable(value = "clientId") int clientId) {
         Map<String, List<Factura>> response = new HashMap<>();

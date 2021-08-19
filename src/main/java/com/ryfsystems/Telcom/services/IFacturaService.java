@@ -15,5 +15,6 @@ public interface IFacturaService {
     Iterable<Factura> getAll();
     Iterable<Factura> findAllWithDescriptionQuery(String zona);
     Iterable<Factura> findAllByClientWithDescriptionQuery(String name);
+    Iterable<Factura> findAllByClientWithDescriptionQuery2(String name);
     void updateStatus(long id, String forma);
 }
