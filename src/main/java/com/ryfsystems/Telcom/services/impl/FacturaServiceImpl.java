@@ -62,6 +62,11 @@ public class FacturaServiceImpl implements IFacturaService {
     }
 
     @Override
+    public Iterable<Factura> findAllWithDescriptionQuery2(String forma, Date pago) {
+        return facturaDao.findAllWithDescriptionQuery2(forma, pago);
+    }
+
+    @Override
     public void updateStatus(long id, String forma) {
         facturaDao.findById(id).ifPresent(x -> {
             x.setEstado("pagado");

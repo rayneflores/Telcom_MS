@@ -3,6 +3,7 @@ package com.ryfsystems.Telcom.controllers;
 import com.ryfsystems.Telcom.entity.models.Factura;
 import com.ryfsystems.Telcom.services.IFacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,6 +69,17 @@ public class FacturaController {
         List<Factura> facturasList;
         facturasList = StreamSupport
                 .stream(facturaService.getAllByClientId(clientId).spliterator(), false)
+                .collect(Collectors.toList());
+        response.put("facturas", facturasList);
+        return response;
+    }
+
+    @GetMapping("/allCobradasCobrador/{forma}/{pago}")
+    public Map<String, List<Factura>> getAllCobradasCobrador(@PathVariable(value = "forma") String forma, @PathVariable(value = "pago") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date pago) {
+        Map<String, List<Factura>> response = new HashMap<>();
+        List<Factura> facturasList;
+        facturasList = StreamSupport
+                .stream(facturaService.findAllWithDescriptionQuery2(forma, pago).spliterator(), false)
                 .collect(Collectors.toList());
         response.put("facturas", facturasList);
         return response;

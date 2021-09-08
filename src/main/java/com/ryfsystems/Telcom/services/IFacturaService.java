@@ -2,6 +2,7 @@ package com.ryfsystems.Telcom.services;
 
 import com.ryfsystems.Telcom.entity.models.Factura;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,6 @@ public interface IFacturaService {
     Iterable<Factura> findAllWithDescriptionQuery(String zona);
     Iterable<Factura> findAllByClientWithDescriptionQuery(String name);
     Iterable<Factura> findAllByClientWithDescriptionQuery2(String name);
+    Iterable<Factura> findAllWithDescriptionQuery2(String forma, Date pago);
     void updateStatus(long id, String forma);
 }
