@@ -34,8 +34,9 @@ public class SoporteController {
         return soporteService.update(id);
     }
 
-    @PutMapping("/close/{id}")
-    public Soporte close(@PathVariable(value = "id") Long id) throws Exception {
-        return soporteService.close(id);
+    @PutMapping("/close/{id}/{motivoCierre}")
+    public Soporte close(@PathVariable(value = "id") Long id,
+                         @PathVariable(value = "motivoCierre") String motivoCierre) throws Exception {
+        return soporteService.close(id, motivoCierre);
     }
 }

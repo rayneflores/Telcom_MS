@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface ISoporteDao extends CrudRepository<Soporte, Long> {
 
     @Query("select " +
-           "s.id, s.fechaSoporte, l.nombre, u.nombre, s.asunto, s.operador, s.estado, s.idsoporte " +
+           "s.id, s.fechaSoporte, l.nombre, u.nombre, s.asunto, s.operador, s.estado, s.idsoporte, u.clienteZona, u.direccionPrincipal, u.movil, u.telefono " +
            "from Soporte s " +
            "left join Login l " +
            "on l.id = s.idsoporte " +

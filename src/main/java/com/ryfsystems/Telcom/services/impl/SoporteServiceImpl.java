@@ -42,7 +42,7 @@ public class SoporteServiceImpl implements ISoporteService {
     }
 
     @Override
-    public Soporte close(Long id) throws Exception {
+    public Soporte close(Long id, String motivoCierre) throws Exception {
         try {
             Optional<Soporte> optionalSoporte = soporteDao.findById(id);
             if (!optionalSoporte.isPresent()){
@@ -53,6 +53,7 @@ public class SoporteServiceImpl implements ISoporteService {
 
             obj.setEstado("cerrado");
             obj.setFechaCerrado(new Date());
+            obj.setMotivoCierre(motivoCierre);
             soporteDao.save(obj);
             return obj;
 
