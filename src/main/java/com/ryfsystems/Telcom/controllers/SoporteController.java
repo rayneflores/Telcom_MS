@@ -29,6 +29,17 @@ public class SoporteController {
         return response;
     }
 
+    @GetMapping("/allByClient/{clientName}")
+    public Map<String, List<Soporte>> getAllSoporteByClient(@PathVariable(value = "clientName") String cliente) {
+        Map<String, List<Soporte>> response = new HashMap<>();
+        List<Soporte> soporteList;
+        soporteList = StreamSupport
+                .stream(soporteService.findAllWithDescriptionQuery2(cliente).spliterator(), false)
+                .collect(Collectors.toList());
+        response.put("soporte", soporteList);
+        return response;
+    }
+
     @PutMapping("/update/{id}")
     public Soporte update(@PathVariable(value = "id") Long id) throws Exception {
         return soporteService.update(id);

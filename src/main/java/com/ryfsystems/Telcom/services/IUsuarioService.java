@@ -9,4 +9,5 @@ public interface IUsuarioService {
     Optional<Usuario> get(long id);
     Iterable<Usuario> getAll();
     Iterable<Usuario> getByZonaUsuarios(String zona);
+    Optional<Usuario> getByCedulaAndPassActivos(String cedula, String pass, String estado);
 }

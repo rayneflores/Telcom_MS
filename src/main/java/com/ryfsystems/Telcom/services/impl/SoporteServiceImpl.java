@@ -21,6 +21,11 @@ public class SoporteServiceImpl implements ISoporteService {
     }
 
     @Override
+    public Iterable<Soporte> findAllWithDescriptionQuery2(String cliente) {
+        return soporteDao.findAllWithDescriptionQuery2(cliente);
+    }
+
+    @Override
     public Soporte update(Long id) throws Exception {
         try {
             Optional<Soporte> optionalSoporte = soporteDao.findById(id);

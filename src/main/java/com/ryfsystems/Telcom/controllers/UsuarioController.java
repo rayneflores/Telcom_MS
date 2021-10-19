@@ -54,4 +54,15 @@ public class UsuarioController {
         }
         return ResponseEntity.ok(optionalUsuario);
     }
+
+    @GetMapping("/login/{cedula}/{codigo}")
+    public ResponseEntity login(@PathVariable(value = "cedula") String cedula,
+                                @PathVariable(value = "codigo") String codigo) {
+        Optional<Usuario> optUsuario = usuarioService.getByCedulaAndPassActivos(cedula, codigo, "ACTIVO");
+        if (!optUsuario.isPresent()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Combinacion Cedula / Password Incorrecta!!!");
+        }
+        Usuario usuario = optUsuario.get();
+        return ResponseEntity.status(HttpStatus.OK).body(usuario);
+    }
 }

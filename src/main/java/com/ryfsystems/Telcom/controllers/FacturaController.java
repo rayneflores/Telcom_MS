@@ -75,11 +75,23 @@ public class FacturaController {
     }
 
     @GetMapping("/allCobradasCobrador/{forma}/{pago}")
-    public Map<String, List<Factura>> getAllCobradasCobrador(@PathVariable(value = "forma") String forma, @PathVariable(value = "pago") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date pago) {
+    public Map<String, List<Factura>> getAllCobradasCobrador(@PathVariable(value = "forma") String forma,
+                                                             @PathVariable(value = "pago") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date pago) {
         Map<String, List<Factura>> response = new HashMap<>();
         List<Factura> facturasList;
         facturasList = StreamSupport
                 .stream(facturaService.findAllWithDescriptionQuery2(forma, pago).spliterator(), false)
+                .collect(Collectors.toList());
+        response.put("facturas", facturasList);
+        return response;
+    }
+
+    @GetMapping("/allCobradas/{pago}")
+    public Map<String, List<Factura>> getAllCobradas(@PathVariable(value = "pago") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date pago) {
+        Map<String, List<Factura>> response = new HashMap<>();
+        List<Factura> facturasList;
+        facturasList = StreamSupport
+                .stream(facturaService.findAllWithDescriptionQuery3(pago).spliterator(), false)
                 .collect(Collectors.toList());
         response.put("facturas", facturasList);
         return response;

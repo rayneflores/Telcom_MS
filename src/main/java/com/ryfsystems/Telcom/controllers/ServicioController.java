@@ -43,4 +43,15 @@ public class ServicioController {
         response.put("servicios", serviciosList);
         return response;
     }
+
+    @GetMapping("/withNameA/{cedula}")
+    public Map<String, List<Servicio>> getAllServiciosWithName2(@PathVariable("cedula") String cedula) {
+        Map<String, List<Servicio>> response = new HashMap<>();
+        List<Servicio> serviciosList;
+        serviciosList = StreamSupport
+                .stream(servicioService.findAllWithDescriptionQuery2(cedula).spliterator(), false)
+                .collect(Collectors.toList());
+        response.put("servicios", serviciosList);
+        return response;
+    }
 }

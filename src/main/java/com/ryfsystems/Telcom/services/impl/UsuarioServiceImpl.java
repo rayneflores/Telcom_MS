@@ -28,4 +28,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public Iterable<Usuario> getByZonaUsuarios(String zona) {
         return usuarioDao.getByClienteZona(zona);
     }
+
+    @Override
+    public Optional<Usuario> getByCedulaAndPassActivos(String cedula, String pass, String estado) {
+        return usuarioDao.findByCedulaAndCodigoAndEstado(cedula, pass, estado);
+    }
 }
